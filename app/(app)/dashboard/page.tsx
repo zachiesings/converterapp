@@ -21,10 +21,10 @@ export default function DashboardPage() {
   const favTools = favs.map(getTool).filter((t): t is Tool => Boolean(t));
 
   const stats = [
-    { label: "File diproses", value: items.length, icon: FileCheck2, gradient: "from-emerald-500 to-teal-500" },
-    { label: "Tools tersedia", value: TOOLS.length, icon: Layers, gradient: "from-indigo-500 to-violet-500" },
-    { label: "Tool favorit", value: favs.length, icon: Star, gradient: "from-amber-500 to-orange-500" },
-    { label: "Terakhir dipakai", value: items[0]?.tool ?? "—", icon: Clock, gradient: "from-fuchsia-500 to-pink-500" },
+    { label: "Files processed", value: items.length, icon: FileCheck2, gradient: "from-emerald-500 to-teal-500" },
+    { label: "Tools available", value: TOOLS.length, icon: Layers, gradient: "from-indigo-500 to-violet-500" },
+    { label: "Favorite tools", value: favs.length, icon: Star, gradient: "from-amber-500 to-orange-500" },
+    { label: "Last used", value: items[0]?.tool ?? "—", icon: Clock, gradient: "from-fuchsia-500 to-pink-500" },
   ];
 
   return (
@@ -40,13 +40,13 @@ export default function DashboardPage() {
           <p className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold">
             <Sparkles className="h-3.5 w-3.5" /> Dashboard
           </p>
-          <h1 className="mt-3 text-2xl font-extrabold sm:text-3xl">Selamat datang kembali 👋</h1>
+          <h1 className="mt-3 text-2xl font-extrabold sm:text-3xl">Welcome back 👋</h1>
           <p className="mt-1.5 max-w-lg text-white/80">
-            Pilih tool, unggah file, dan biarkan kami yang bekerja. Cepat, aman, dan rapi.
+            Pick a tool, upload your file, and let us do the work. Fast, secure, and tidy.
           </p>
           <Link href="/tools" className="mt-5 inline-block">
             <Button variant="secondary" className="bg-white text-indigo-700 hover:bg-white">
-              Mulai Convert <ArrowRight className="h-4 w-4" />
+              Start Converting <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
         </div>
@@ -56,9 +56,9 @@ export default function DashboardPage() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-bold">Aksi Cepat</h2>
+          <h2 className="text-lg font-bold">Quick Actions</h2>
           <Link href="/tools" className="text-sm text-brand-500 hover:underline">
-            Lihat semua
+            View all
           </Link>
         </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -73,10 +73,10 @@ export default function DashboardPage() {
 
         <div className="rounded-3xl glass p-5 shadow-soft dark:shadow-soft-dark">
           <h3 className="mb-4 flex items-center gap-2 text-base font-bold">
-            <Star className="h-4 w-4 text-amber-400" /> Tool Favorit
+            <Star className="h-4 w-4 text-amber-400" /> Favorite Tools
           </h3>
           {favTools.length === 0 ? (
-            <EmptyState icon={Star} title="Belum ada favorit" description="Tandai tool dengan ikon bintang untuk akses cepat." />
+            <EmptyState icon={Star} title="No favorites yet" description="Star a tool with the star icon for quick access." />
           ) : (
             <div className="space-y-1.5">
               {favTools.map((t) => {

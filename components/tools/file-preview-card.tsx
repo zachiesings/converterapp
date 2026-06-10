@@ -30,7 +30,7 @@ export function FilePreviewCard({
           <p className="truncate text-sm font-semibold">{uf.name}</p>
           <p className="text-xs text-muted-foreground">
             {formatBytes(uf.size)}
-            {uf.pages ? ` · ${uf.pages} halaman` : ""}
+            {uf.pages ? ` · ${uf.pages} pages` : ""}
           </p>
         </div>
         <ConversionStatus status={uf.status} />
@@ -38,7 +38,7 @@ export function FilePreviewCard({
           <button
             onClick={() => onRemove(uf.id)}
             className="rounded-lg p-1.5 text-muted-foreground transition hover:bg-rose-500/10 hover:text-rose-500"
-            aria-label="Hapus file"
+            aria-label="Remove file"
           >
             <X className="h-4 w-4" />
           </button>
@@ -59,7 +59,7 @@ export function FilePreviewCard({
       )}
 
       {uf.status === "failed" && (
-        <p className="mt-2 text-xs font-medium text-rose-500">{uf.error || "Gagal memproses file."}</p>
+        <p className="mt-2 text-xs font-medium text-rose-500">{uf.error || "Failed to process file."}</p>
       )}
     </motion.div>
   );

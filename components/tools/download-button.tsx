@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 export function DownloadButton({
   url,
   name,
-  label = "Download hasil",
+  label = "Download result",
   className,
 }: {
   url: string;

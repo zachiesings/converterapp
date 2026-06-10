@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 
 export function ConfirmModal({
   open,
-  title = "Konfirmasi",
+  title = "Confirm",
   message,
-  confirmLabel = "Hapus",
-  cancelLabel = "Batal",
+  confirmLabel = "Delete",
+  cancelLabel = "Cancel",
   danger = true,
   onConfirm,
   onClose,

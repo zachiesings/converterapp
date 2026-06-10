@@ -9,12 +9,12 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
   title: "PDF Toolkit — All-in-one PDF & Document Converter",
   description:
-    "Konversi PDF ke Word, Word ke PDF, dan 20+ alat dokumen lainnya. Cepat, aman, dan mudah digunakan.",
+    "Convert PDF to Word, Word to PDF, and use 20+ other document tools. Fast, secure, and easy to use.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" suppressHydrationWarning className={inter.variable}>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
       <body className="font-sans antialiased">
         <Providers>
           <Background />

@@ -44,11 +44,11 @@ export function ToolRunner({ slug }: { slug: string }) {
     const valid: UploadFile[] = [];
     for (const file of incoming) {
       if (!matchesAccept(file, tool.accept)) {
-        toast.error(`Format tidak didukung: ${file.name}`);
+        toast.error(`Unsupported format: ${file.name}`);
         continue;
       }
       if (tool.maxSizeMB && file.size > tool.maxSizeMB * 1024 * 1024) {
-        toast.error(`File terlalu besar (maks ${tool.maxSizeMB} MB): ${file.name}`);
+        toast.error(`File too large (max ${tool.maxSizeMB} MB): ${file.name}`);
         continue;
       }
       valid.push({
@@ -63,7 +63,7 @@ export function ToolRunner({ slug }: { slug: string }) {
     }
     if (!valid.length) return;
     setFiles((prev) => (tool.multiple ? [...prev, ...valid] : valid.slice(-1)));
-    toast.success(`${valid.length} file ditambahkan`);
+    toast.success(`${valid.length} file(s) added`);
   };
 
   const removeFile = (id: string) => {
@@ -81,7 +81,7 @@ export function ToolRunner({ slug }: { slug: string }) {
       update(uf.id, { status: "success", progress: 100, resultUrl: res.url, resultName: res.name });
       addRecent({ id: uid(), tool: tool.name, toolSlug: tool.slug, fileName: uf.name, at: Date.now(), status: "success" });
     } catch (e) {
-      update(uf.id, { status: "failed", error: e instanceof Error ? e.message : "Gagal" });
+      update(uf.id, { status: "failed", error: e instanceof Error ? e.message : "Failed" });
     }
   };
 
@@ -98,11 +98,11 @@ export function ToolRunner({ slug }: { slug: string }) {
       );
       setFiles((prev) => prev.map((f) => ({ ...f, status: "success", progress: 100 })));
       setAgg(res);
-      addRecent({ id: uid(), tool: tool.name, toolSlug: tool.slug, fileName: `${files.length} file`, at: Date.now(), status: "success" });
-      toast.success("Berhasil diproses! 🎉");
+      addRecent({ id: uid(), tool: tool.name, toolSlug: tool.slug, fileName: `${files.length} files`, at: Date.now(), status: "success" });
+      toast.success("Successfully processed! 🎉");
     } catch (e) {
-      setFiles((prev) => prev.map((f) => ({ ...f, status: "failed", error: e instanceof Error ? e.message : "Gagal" })));
-      toast.error("Gagal memproses file");
+      setFiles((prev) => prev.map((f) => ({ ...f, status: "failed", error: e instanceof Error ? e.message : "Failed" })));
+      toast.error("Failed to process file");
     }
     setRunning(false);
   };
@@ -110,12 +110,12 @@ export function ToolRunner({ slug }: { slug: string }) {
   const convertAll = async () => {
     const waiting = files.filter((f) => f.status === "waiting");
     if (!waiting.length) {
-      toast.error("Tambahkan file terlebih dahulu");
+      toast.error("Please add a file first");
       return;
     }
     if (tool.aggregate) {
       if (tool.slug === "merge-pdf" && files.length < 2) {
-        toast.error("Tambahkan minimal 2 PDF untuk digabung");
+        toast.error("Add at least 2 PDFs to merge");
         return;
       }
       await aggregateRun();
@@ -124,7 +124,7 @@ export function ToolRunner({ slug }: { slug: string }) {
     setRunning(true);
     for (const uf of waiting) await runOne(uf);
     setRunning(false);
-    toast.success("Proses selesai! 🎉");
+    toast.success("Processing complete! 🎉");
   };
 
   const reset = () => {
@@ -158,14 +158,14 @@ export function ToolRunner({ slug }: { slug: string }) {
           accept={tool.accept}
           multiple={tool.multiple}
           maxSizeMB={tool.maxSizeMB}
-          label={`Format ${tool.acceptLabel}`}
+          label={`${tool.acceptLabel} format`}
           onFiles={addFiles}
         />
       )}
 
       {tool.settings && files.length > 0 && (
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl glass p-5">
-          <p className="mb-4 text-sm font-bold">Pengaturan</p>
+          <p className="mb-4 text-sm font-bold">Settings</p>
           <div className="grid gap-4 sm:grid-cols-2">
             {tool.settings.map((s) => (
               <SettingField
@@ -198,7 +198,7 @@ export function ToolRunner({ slug }: { slug: string }) {
             className="rounded-2xl glass p-4"
           >
             <div className="mb-3 flex items-center gap-2 text-sm font-bold">
-              <CheckCircle2 className="h-4 w-4 text-emerald-500" /> Hasil siap diunduh
+              <CheckCircle2 className="h-4 w-4 text-emerald-500" /> Result ready to download
             </div>
             <DownloadButton url={agg.url} name={agg.name} label={`Download ${agg.name}`} />
           </motion.div>
@@ -214,17 +214,17 @@ export function ToolRunner({ slug }: { slug: string }) {
           >
             {running ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin" /> Memproses…
+                <Loader2 className="h-4 w-4 animate-spin" /> Processing…
               </>
             ) : (
               <>
-                <Play className="h-4 w-4" /> Convert{tool.multiple ? " Semua" : ""}
+                <Play className="h-4 w-4" /> Convert{tool.multiple ? " All" : ""}
               </>
             )}
           </Button>
           {successCount > 0 && !tool.aggregate && (
             <Button variant="secondary" onClick={downloadAll}>
-              <Download className="h-4 w-4" /> Unduh semua ({successCount})
+              <Download className="h-4 w-4" /> Download all ({successCount})
             </Button>
           )}
           <Button variant="outline" onClick={reset}>
@@ -243,7 +243,7 @@ export function ToolRunner({ slug }: { slug: string }) {
           >
             <CheckCircle2 className="h-5 w-5 shrink-0" />
             <span className="text-sm font-semibold">
-              Semua file berhasil diproses! Unduh di tiap kartu atau lewat “Unduh semua”.
+              All files processed successfully! Download from each card or via “Download all”.
             </span>
           </motion.div>
         )}
@@ -251,8 +251,8 @@ export function ToolRunner({ slug }: { slug: string }) {
 
       <ConfirmModal
         open={confirmId !== null}
-        title="Hapus file"
-        message="Hapus file ini dari daftar? Tindakan ini tidak bisa dibatalkan."
+        title="Remove file"
+        message="Remove this file from the list? This action cannot be undone."
         onConfirm={() => confirmId && removeFile(confirmId)}
         onClose={() => setConfirmId(null)}
       />

@@ -17,9 +17,9 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
 }
 
 const FAQ = [
-  { q: "Apakah file saya aman?", a: "Ya. File diproses sesuai kebutuhan dan tidak disimpan permanen tanpa izin Anda." },
-  { q: "Berapa ukuran file maksimum?", a: "Tergantung tool, batas ditampilkan di area unggah. File yang melebihi batas akan ditolak." },
-  { q: "Apakah gratis?", a: "Semua tool dasar dapat digunakan gratis langsung di browser." },
+  { q: "Are my files safe?", a: "Yes. Files are processed only as needed and are never stored permanently without your permission." },
+  { q: "What is the maximum file size?", a: "It depends on the tool — the limit is shown in the upload area. Files that exceed the limit will be rejected." },
+  { q: "Is it free?", a: "All the core tools are free to use right in your browser." },
 ];
 
 export default function ToolPage({ params }: { params: { slug: string } }) {
@@ -43,7 +43,7 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
       <div className="relative overflow-hidden rounded-3xl glass p-6 sm:p-8 shadow-soft dark:shadow-soft-dark">
         <div className={cn("pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-gradient-to-br opacity-25 blur-3xl", tool.gradient)} />
         <Link href="/tools" className="mb-4 inline-flex items-center gap-1 text-sm text-muted-foreground transition hover:text-foreground">
-          <ChevronLeft className="h-4 w-4" /> Semua tools
+          <ChevronLeft className="h-4 w-4" /> All tools
         </Link>
         <div className="flex items-start gap-4">
           <div className={cn("flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-glow", tool.gradient)}>
@@ -68,17 +68,17 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
         {/* side info */}
         <aside className="space-y-4">
           <div className="rounded-2xl glass p-5">
-            <p className="text-sm font-bold">Kenapa tool ini?</p>
+            <p className="text-sm font-bold">Why this tool?</p>
             <ul className="mt-3 space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2.5"><Zap className="h-4 w-4 text-amber-500" /> Proses cepat</li>
-              <li className="flex items-center gap-2.5"><ShieldCheck className="h-4 w-4 text-emerald-500" /> File aman</li>
-              <li className="flex items-center gap-2.5"><Lock className="h-4 w-4 text-brand-500" /> Privat & tidak disimpan</li>
+              <li className="flex items-center gap-2.5"><Zap className="h-4 w-4 text-amber-500" /> Fast processing</li>
+              <li className="flex items-center gap-2.5"><ShieldCheck className="h-4 w-4 text-emerald-500" /> Secure files</li>
+              <li className="flex items-center gap-2.5"><Lock className="h-4 w-4 text-brand-500" /> Private & not stored</li>
             </ul>
           </div>
 
           {related.length > 0 && (
             <div className="rounded-2xl glass p-5">
-              <p className="text-sm font-bold">Tool terkait</p>
+              <p className="text-sm font-bold">Related tools</p>
               <div className="mt-3 space-y-1.5">
                 {related.map((r) => {
                   const RIcon = r.icon;
@@ -100,7 +100,7 @@ export default function ToolPage({ params }: { params: { slug: string } }) {
       {/* FAQ */}
       <div className="rounded-3xl glass p-6 sm:p-8 shadow-soft dark:shadow-soft-dark">
         <h2 className="flex items-center gap-2 text-lg font-bold">
-          <HelpCircle className="h-5 w-5 text-brand-500" /> Pertanyaan umum
+          <HelpCircle className="h-5 w-5 text-brand-500" /> Common questions
         </h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
           {FAQ.map((f) => (

@@ -4,10 +4,10 @@ import type { FileStatus } from "@/types";
 import { cn } from "@/lib/utils";
 
 const MAP = {
-  waiting: { label: "Menunggu", icon: Clock, cls: "text-muted-foreground bg-muted" },
-  processing: { label: "Memproses", icon: Loader2, cls: "text-brand-500 bg-brand-500/10" },
-  success: { label: "Selesai", icon: CheckCircle2, cls: "text-emerald-500 bg-emerald-500/10" },
-  failed: { label: "Gagal", icon: XCircle, cls: "text-rose-500 bg-rose-500/10" },
+  waiting: { label: "Waiting", icon: Clock, cls: "text-muted-foreground bg-muted" },
+  processing: { label: "Processing", icon: Loader2, cls: "text-brand-500 bg-brand-500/10" },
+  success: { label: "Done", icon: CheckCircle2, cls: "text-emerald-500 bg-emerald-500/10" },
+  failed: { label: "Failed", icon: XCircle, cls: "text-rose-500 bg-rose-500/10" },
 } as const;
 
 export function ConversionStatus({ status }: { status: FileStatus }) {

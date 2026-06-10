@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const MAIN = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/tools", label: "Semua Tools", icon: Grid3x3 },
+  { href: "/tools", label: "All Tools", icon: Grid3x3 },
 ];
 
 export function Sidebar() {
@@ -39,7 +39,7 @@ export function Sidebar() {
         })}
       </nav>
 
-      <p className="mt-6 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Kategori</p>
+      <p className="mt-6 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Categories</p>
       <nav className="mt-2 space-y-0.5 overflow-y-auto">
         {CATEGORIES.map((c) => {
           const Icon = c.icon;
@@ -61,10 +61,10 @@ export function Sidebar() {
       <div className="mt-auto rounded-2xl glass p-4">
         <div className="flex items-center gap-2 text-emerald-500">
           <ShieldCheck className="h-4 w-4" />
-          <span className="text-xs font-bold">Aman & Privat</span>
+          <span className="text-xs font-bold">Safe & Private</span>
         </div>
         <p className="mt-1.5 text-xs text-muted-foreground">
-          File diproses sesuai kebutuhan dan tidak disimpan permanen tanpa izin.
+          Files are processed only as needed and never stored permanently without permission.
         </p>
       </div>
     </aside>

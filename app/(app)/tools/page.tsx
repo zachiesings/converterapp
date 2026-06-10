@@ -29,9 +29,9 @@ function Browser() {
     <div className="space-y-6">
       <div>
         <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-3xl font-extrabold">
-          Semua <span className="text-gradient">Tools</span>
+          All <span className="text-gradient">Tools</span>
         </motion.h1>
-        <p className="mt-1 text-muted-foreground">{TOOLS.length} alat dokumen — pilih, unggah, dan proses.</p>
+        <p className="mt-1 text-muted-foreground">{TOOLS.length} document tools — pick, upload, and process.</p>
       </div>
 
       <SearchTools value={q} onChange={setQ} />
@@ -41,7 +41,7 @@ function Browser() {
         {filtered.length > 0 ? (
           <ToolGrid tools={filtered} />
         ) : (
-          <EmptyState icon={SearchX} title="Tidak ada tool yang cocok" description="Coba kata kunci atau kategori lain." />
+          <EmptyState icon={SearchX} title="No matching tools" description="Try a different keyword or category." />
         )}
       </div>
     </div>

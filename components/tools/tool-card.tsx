@@ -42,7 +42,7 @@ export function ToolCard({ tool, index = 0 }: { tool: Tool; index?: number }) {
                 toggle(tool.slug);
               }}
               className="rounded-lg p-1.5 text-muted-foreground transition hover:text-amber-400"
-              aria-label="Tandai favorit"
+              aria-label="Mark as favorite"
             >
               <Star className={cn("h-4 w-4", fav && "fill-amber-400 text-amber-400")} />
             </button>

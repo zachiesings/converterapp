@@ -10,7 +10,7 @@ export function CategoryTabs({
   active: string;
   onChange: (id: string) => void;
 }) {
-  const tabs = [{ id: "all", label: "Semua" }, ...CATEGORIES.map((c) => ({ id: c.id, label: c.label }))];
+  const tabs = [{ id: "all", label: "All" }, ...CATEGORIES.map((c) => ({ id: c.id, label: c.label }))];
 
   return (
     <div className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 export function SearchTools({
   value,
   onChange,
-  placeholder = "Cari tools… (mis. word, kompres, gambar)",
+  placeholder = "Search tools… (e.g. word, compress, image)",
 }: {
   value: string;
   onChange: (v: string) => void;

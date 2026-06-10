@@ -9,16 +9,16 @@ export function Footer() {
         <div className="lg:col-span-1">
           <Logo />
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            Konverter & alat dokumen all-in-one. Cepat, aman, dan mudah digunakan.
+            An all-in-one document converter & toolkit. Fast, secure, and easy to use.
           </p>
           <div className="mt-4 inline-flex items-center gap-2 rounded-full glass px-3 py-1.5 text-xs font-medium text-muted-foreground">
-            <ShieldCheck className="h-4 w-4 text-emerald-500" /> File diproses dengan aman
+            <ShieldCheck className="h-4 w-4 text-emerald-500" /> Files processed securely
           </div>
         </div>
         {[
-          { title: "Produk", links: ["Semua Tools", "Dashboard", "Harga", "Changelog"] },
-          { title: "Perusahaan", links: ["Tentang", "Blog", "Karier", "Kontak"] },
-          { title: "Legal", links: ["Privasi", "Ketentuan", "Keamanan", "Cookie"] },
+          { title: "Product", links: ["All Tools", "Dashboard", "Pricing", "Changelog"] },
+          { title: "Company", links: ["About", "Blog", "Careers", "Contact"] },
+          { title: "Legal", links: ["Privacy", "Terms", "Security", "Cookies"] },
         ].map((col) => (
           <div key={col.title}>
             <h4 className="text-sm font-bold">{col.title}</h4>
@@ -36,7 +36,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border/60">
         <div className="mx-auto max-w-7xl px-4 py-6 text-center text-xs text-muted-foreground sm:px-6 lg:px-8">
-          © 2026 PDF Toolkit. Dibuat dengan ❤️ untuk produktivitas dokumen.
+          © 2026 PDF Toolkit. Made with ❤️ for document productivity.
         </div>
       </div>
     </footer>

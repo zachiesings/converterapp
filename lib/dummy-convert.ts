@@ -2,11 +2,11 @@ import type { Tool } from "@/types";
 import { baseName, sleep } from "./utils";
 
 /**
- * Simulasi proses konversi (dummy).
+ * Simulated (dummy) conversion process.
  *
- * Ganti isi fungsi ini dengan pemanggilan API/library asli nanti — antarmuka
- * (onProgress + return { url, name }) sudah dirancang agar tidak perlu mengubah
- * komponen UI saat backend asli dipasang.
+ * Replace the body of this function with a real API/library call later — the
+ * interface (onProgress + return { url, name }) is designed so the UI
+ * components won't need to change when the real backend is wired in.
  */
 export async function dummyConvert(
   file: File,
@@ -17,19 +17,19 @@ export async function dummyConvert(
   let pct = 0;
   onProgress(0);
   while (pct < 100) {
-    if (signal?.aborted) throw new Error("Dibatalkan");
+    if (signal?.aborted) throw new Error("Cancelled");
     pct = Math.min(100, pct + 6 + Math.random() * 14);
     onProgress(Math.round(pct));
     await sleep(140 + Math.random() * 160);
   }
 
-  // Hasil dummy: file teks kecil. Diganti dengan output asli nanti.
+  // Dummy result: a small text file. Replaced with real output later.
   const content =
-    `PDF Toolkit — hasil simulasi\n\n` +
+    `PDF Toolkit — simulated result\n\n` +
     `Tool   : ${tool.name}\n` +
-    `Sumber : ${file.name}\n` +
-    `Ukuran : ${file.size} bytes\n\n` +
-    `Ini adalah berkas placeholder. Pasang konversi asli pada lib/dummy-convert.ts.`;
+    `Source : ${file.name}\n` +
+    `Size   : ${file.size} bytes\n\n` +
+    `This is a placeholder file. Wire up the real conversion in lib/dummy-convert.ts.`;
   const blob = new Blob([content], { type: "application/octet-stream" });
   const url = URL.createObjectURL(blob);
   return { url, name: `${baseName(file.name)}.${tool.outputExt}` };

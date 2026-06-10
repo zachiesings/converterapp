@@ -8,10 +8,10 @@ import { EmptyState } from "@/components/empty-state";
 
 function timeAgo(ts: number): string {
   const s = Math.floor((Date.now() - ts) / 1000);
-  if (s < 60) return "baru saja";
-  if (s < 3600) return `${Math.floor(s / 60)} menit lalu`;
-  if (s < 86400) return `${Math.floor(s / 3600)} jam lalu`;
-  return `${Math.floor(s / 86400)} hari lalu`;
+  if (s < 60) return "just now";
+  if (s < 3600) return `${Math.floor(s / 60)} min ago`;
+  if (s < 86400) return `${Math.floor(s / 3600)} hours ago`;
+  return `${Math.floor(s / 86400)} days ago`;
 }
 
 export function RecentFiles({ items, onClear }: { items: RecentItem[]; onClear: () => void }) {
@@ -19,17 +19,17 @@ export function RecentFiles({ items, onClear }: { items: RecentItem[]; onClear: 
     <div className="rounded-3xl glass p-5 shadow-soft dark:shadow-soft-dark">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="flex items-center gap-2 text-base font-bold">
-          <FileClock className="h-4 w-4 text-brand-500" /> Konversi Terbaru
+          <FileClock className="h-4 w-4 text-brand-500" /> Recent Conversions
         </h3>
         {items.length > 0 && (
           <button onClick={onClear} className="inline-flex items-center gap-1 text-xs text-muted-foreground transition hover:text-rose-500">
-            <Trash2 className="h-3.5 w-3.5" /> Bersihkan
+            <Trash2 className="h-3.5 w-3.5" /> Clear
           </button>
         )}
       </div>
 
       {items.length === 0 ? (
-        <EmptyState icon={FileClock} title="Belum ada aktivitas" description="Konversi pertamamu akan muncul di sini." />
+        <EmptyState icon={FileClock} title="No activity yet" description="Your first conversion will show up here." />
       ) : (
         <div className="space-y-2">
           {items.map((it, i) => (

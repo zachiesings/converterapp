@@ -75,12 +75,12 @@ export function UploadBox({
           <UploadCloud className="h-8 w-8" />
         </motion.div>
         <p className="text-base font-bold">
-          {drag ? "Lepaskan file di sini ✨" : "Tarik & letakkan file, atau klik untuk pilih"}
+          {drag ? "Drop your file here ✨" : "Drag & drop a file, or click to choose"}
         </p>
         <p className="mt-1.5 text-sm text-muted-foreground">
           {label}
-          {maxSizeMB ? ` · Maks ${maxSizeMB} MB` : ""}
-          {multiple ? " · Bisa banyak file" : ""}
+          {maxSizeMB ? ` · Max ${maxSizeMB} MB` : ""}
+          {multiple ? " · Multiple files allowed" : ""}
         </p>
       </motion.div>
     </div>

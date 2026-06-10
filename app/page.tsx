@@ -19,23 +19,23 @@ const fadeUp = {
 };
 
 const STEPS = [
-  { icon: Upload, title: "Upload file", desc: "Tarik & letakkan atau pilih file dari perangkat Anda." },
-  { icon: MousePointerClick, title: "Pilih tool", desc: "Tentukan konversi atau alat dokumen yang diinginkan." },
-  { icon: Download, title: "Download hasil", desc: "Proses berjalan cepat, lalu unduh hasilnya." },
+  { icon: Upload, title: "Upload a file", desc: "Drag & drop or choose a file from your device." },
+  { icon: MousePointerClick, title: "Pick a tool", desc: "Select the conversion or document tool you need." },
+  { icon: Download, title: "Download the result", desc: "Processing is fast — then just download your result." },
 ];
 
 const REASONS = [
-  { icon: Zap, title: "Proses cepat", desc: "Optimasi performa untuk konversi yang gesit.", gradient: "from-amber-500 to-orange-500" },
-  { icon: ShieldCheck, title: "File aman", desc: "Diproses sesuai kebutuhan, tidak disimpan permanen.", gradient: "from-emerald-500 to-teal-500" },
-  { icon: Wand2, title: "Mudah dipakai", desc: "Antarmuka bersih, tanpa langkah berbelit.", gradient: "from-violet-500 to-purple-600" },
-  { icon: Layers, title: "20+ alat dokumen", desc: "Semua kebutuhan PDF & Office dalam satu tempat.", gradient: "from-indigo-500 to-blue-600" },
+  { icon: Zap, title: "Fast processing", desc: "Performance-tuned for snappy conversions.", gradient: "from-amber-500 to-orange-500" },
+  { icon: ShieldCheck, title: "Secure files", desc: "Processed only as needed, never stored permanently.", gradient: "from-emerald-500 to-teal-500" },
+  { icon: Wand2, title: "Easy to use", desc: "A clean interface with no convoluted steps.", gradient: "from-violet-500 to-purple-600" },
+  { icon: Layers, title: "20+ document tools", desc: "All your PDF & Office needs in one place.", gradient: "from-indigo-500 to-blue-600" },
 ];
 
 const FAQ = [
-  { q: "Apakah aplikasi ini gratis?", a: "Ya, semua tool dasar dapat digunakan gratis langsung di browser tanpa instalasi." },
-  { q: "Apakah file saya aman?", a: "File diproses sesuai kebutuhan dan dapat dihapus otomatis. Kami tidak menyimpan file permanen tanpa izin Anda." },
-  { q: "Format apa saja yang didukung?", a: "PDF, Word, Excel, PowerPoint, serta gambar (PNG/JPG) untuk berbagai konversi." },
-  { q: "Apakah perlu membuat akun?", a: "Tidak. Anda bisa langsung mengunggah dan mengonversi file tanpa mendaftar." },
+  { q: "Is this app free?", a: "Yes, all the core tools are free to use right in your browser — no installation required." },
+  { q: "Are my files safe?", a: "Files are processed only as needed and can be deleted automatically. We never store files permanently without your permission." },
+  { q: "Which formats are supported?", a: "PDF, Word, Excel, PowerPoint, and images (PNG/JPG) for a wide range of conversions." },
+  { q: "Do I need to create an account?", a: "No. You can upload and convert files right away without signing up." },
 ];
 
 export default function Landing() {
@@ -49,14 +49,14 @@ export default function Landing() {
       <section className="relative mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 lg:px-8 lg:pt-24">
         <motion.div initial="hidden" animate="show" variants={fadeUp} transition={{ duration: 0.6 }} className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-sm font-medium text-muted-foreground">
-            <Sparkles className="h-4 w-4 text-brand-500" /> SaaS dokumen modern · 2026
+            <Sparkles className="h-4 w-4 text-brand-500" /> Modern document SaaS · 2026
           </span>
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl">
             All-in-one PDF &amp; <br className="hidden sm:block" />
             <span className="text-gradient">Document Converter</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-            Konversi PDF ke Word, Word ke PDF, dan 20+ alat dokumen lainnya. Cepat, aman, dan benar-benar mudah digunakan.
+            Convert PDF to Word, Word to PDF, and use 20+ other document tools. Fast, secure, and genuinely easy to use.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link href="/tools">
@@ -66,7 +66,7 @@ export default function Landing() {
             </Link>
             <Link href="/dashboard">
               <Button size="lg" variant="secondary">
-                Lihat Dashboard <ArrowRight className="h-5 w-5" />
+                View Dashboard <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
           </div>
@@ -99,7 +99,7 @@ export default function Landing() {
       </section>
 
       {/* POPULAR TOOLS */}
-      <Section title="Tools Paling Populer" subtitle="Mulai dari yang paling sering dibutuhkan.">
+      <Section title="Most Popular Tools" subtitle="Start with the ones people need most.">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {popular.map((t, i) => (
             <ToolCard key={t.slug} tool={t} index={i} />
@@ -108,14 +108,14 @@ export default function Landing() {
         <div className="mt-8 text-center">
           <Link href="/tools">
             <Button variant="outline" size="lg">
-              Lihat {TOOLS.length} tools <ArrowRight className="h-4 w-4" />
+              View all {TOOLS.length} tools <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
         </div>
       </Section>
 
       {/* HOW IT WORKS */}
-      <Section title="3 Langkah Mudah" subtitle="Dari file ke hasil hanya dalam hitungan detik.">
+      <Section title="3 Simple Steps" subtitle="From file to result in a matter of seconds.">
         <div className="grid gap-6 md:grid-cols-3">
           {STEPS.map((s, i) => {
             const Icon = s.icon;
@@ -132,7 +132,7 @@ export default function Landing() {
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 via-violet-500 to-cyan-400 text-white shadow-glow">
                   <Icon className="h-7 w-7" />
                 </div>
-                <span className="mt-4 block text-xs font-bold uppercase tracking-wider text-brand-500">Langkah {i + 1}</span>
+                <span className="mt-4 block text-xs font-bold uppercase tracking-wider text-brand-500">Step {i + 1}</span>
                 <h3 className="mt-1 text-lg font-bold">{s.title}</h3>
                 <p className="mt-1.5 text-sm text-muted-foreground">{s.desc}</p>
               </motion.div>
@@ -142,7 +142,7 @@ export default function Landing() {
       </Section>
 
       {/* WHY CHOOSE */}
-      <Section title="Kenapa PDF Toolkit?" subtitle="Dirancang untuk kecepatan, keamanan, dan kemudahan.">
+      <Section title="Why PDF Toolkit?" subtitle="Built for speed, security, and simplicity.">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {REASONS.map((r, i) => {
             const Icon = r.icon;
@@ -169,7 +169,7 @@ export default function Landing() {
       </Section>
 
       {/* CATEGORIES */}
-      <Section title="Jelajahi per Kategori" subtitle="Temukan tool sesuai kebutuhan dokumen Anda.">
+      <Section title="Browse by Category" subtitle="Find the right tool for your document needs.">
         <div className="flex flex-wrap justify-center gap-3">
           {CATEGORIES.map((c) => {
             const Icon = c.icon;
@@ -190,7 +190,7 @@ export default function Landing() {
       </Section>
 
       {/* FAQ */}
-      <Section title="Pertanyaan yang Sering Diajukan" subtitle="Hal-hal yang mungkin ingin Anda ketahui.">
+      <Section title="Frequently Asked Questions" subtitle="Things you might want to know.">
         <div className="mx-auto max-w-2xl space-y-3">
           {FAQ.map((f) => (
             <details key={f.q} className="group rounded-2xl glass p-5 [&_summary::-webkit-details-marker]:hidden">
@@ -216,9 +216,9 @@ export default function Landing() {
           <div className="absolute -left-10 -top-10 h-52 w-52 rounded-full bg-cyan-400/30 blur-3xl" />
           <div className="absolute -bottom-12 right-1/4 h-52 w-52 rounded-full bg-pink-400/30 blur-3xl" />
           <div className="relative">
-            <h2 className="text-3xl font-extrabold sm:text-4xl">Siap mengubah dokumen Anda?</h2>
+            <h2 className="text-3xl font-extrabold sm:text-4xl">Ready to transform your documents?</h2>
             <p className="mx-auto mt-3 max-w-lg text-white/80">
-              Tanpa instalasi, tanpa ribet. Mulai konversi pertama Anda sekarang juga.
+              No installation, no hassle. Start your first conversion right now.
             </p>
             <Link href="/tools" className="mt-7 inline-block">
               <Button size="lg" variant="secondary" className="bg-white text-indigo-700 hover:bg-white">

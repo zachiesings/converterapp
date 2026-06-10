@@ -1,16 +1,16 @@
 import { PDFDocument } from "pdf-lib";
 
-/** Hasil konversi: object URL + nama file. */
+/** Conversion result: object URL + file name. */
 export type ConvertResult = { url: string; name: string };
 
 function toResult(bytes: Uint8Array, name: string): ConvertResult {
-  // Salin ke ArrayBuffer baru agar tipe Blob valid (hindari isu SharedArrayBuffer).
+  // Copy into a fresh ArrayBuffer so the Blob type is valid (avoids SharedArrayBuffer issues).
   const copy = new Uint8Array(bytes);
   const blob = new Blob([copy], { type: "application/pdf" });
   return { url: URL.createObjectURL(blob), name };
 }
 
-/** Gabungkan beberapa PDF menjadi satu (konversi ASLI via pdf-lib). */
+/** Merge several PDFs into one (REAL conversion via pdf-lib). */
 export async function mergePdfs(
   files: File[],
   onProgress: (pct: number) => void
@@ -25,10 +25,10 @@ export async function mergePdfs(
   }
   const saved = await out.save();
   onProgress(100);
-  return toResult(saved, "gabungan.pdf");
+  return toResult(saved, "merged.pdf");
 }
 
-/** Gabungkan beberapa gambar (PNG/JPG) menjadi satu PDF (konversi ASLI). */
+/** Combine several images (PNG/JPG) into one PDF (REAL conversion). */
 export async function imagesToPdf(
   files: File[],
   onProgress: (pct: number) => void
@@ -45,10 +45,10 @@ export async function imagesToPdf(
   }
   const saved = await out.save();
   onProgress(100);
-  return toResult(saved, "gambar.pdf");
+  return toResult(saved, "images.pdf");
 }
 
-/** Pilih fungsi konversi asli berdasarkan slug tool, atau null jika belum ada. */
+/** Pick the real conversion function based on the tool slug, or null if none exists yet. */
 export function getRealAggregate(
   slug: string
 ): ((files: File[], onProgress: (pct: number) => void) => Promise<ConvertResult>) | null {

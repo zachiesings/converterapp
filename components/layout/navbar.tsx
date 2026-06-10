@@ -10,9 +10,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
-  { href: "/", label: "Beranda" },
+  { href: "/", label: "Home" },
   { href: "/dashboard", label: "Dashboard" },
-  { href: "/tools", label: "Semua Tools" },
+  { href: "/tools", label: "All Tools" },
 ];
 
 export function Navbar() {
@@ -66,7 +66,7 @@ export function Navbar() {
           <ThemeToggle />
           <Link href="/tools" className="hidden sm:block">
             <Button size="sm">
-              <Sparkles className="h-4 w-4" /> Mulai Convert
+              <Sparkles className="h-4 w-4" /> Start Converting
             </Button>
           </Link>
           <button
@@ -100,7 +100,7 @@ export function Navbar() {
               ))}
               <Link href="/tools" onClick={() => setOpen(false)} className="mt-2">
                 <Button className="w-full">
-                  <Sparkles className="h-4 w-4" /> Mulai Convert
+                  <Sparkles className="h-4 w-4" /> Start Converting
                 </Button>
               </Link>
             </div>

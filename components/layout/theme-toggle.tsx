@@ -13,7 +13,7 @@ export function ThemeToggle() {
 
   return (
     <button
-      aria-label="Ganti tema"
+      aria-label="Toggle theme"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="relative flex h-10 w-10 items-center justify-center rounded-xl glass transition hover:-translate-y-0.5 hover:shadow-glow"
     >
