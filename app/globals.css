@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 230 60% 99%;
+  --foreground: 222 47% 11%;
+  --muted: 220 30% 96%;
+  --muted-foreground: 220 12% 46%;
+  --card: 0 0% 100%;
+  --border: 220 24% 90%;
+}
+
+.dark {
+  --background: 229 41% 7%;
+  --foreground: 213 31% 95%;
+  --muted: 229 24% 16%;
+  --muted-foreground: 220 14% 62%;
+  --card: 229 30% 11%;
+  --border: 229 22% 20%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass {
+    @apply bg-white/80 dark:bg-white/[0.04] backdrop-blur-xl border border-slate-200/70 dark:border-white/10;
+  }
+  .glass-strong {
+    @apply bg-white/90 dark:bg-white/[0.06] backdrop-blur-2xl border border-slate-200/80 dark:border-white/10;
+  }
+  /* Gradient border wrapper */
+  .gradient-border {
+    position: relative;
+    background-clip: padding-box;
+  }
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.6), rgba(168,85,247,0.4), rgba(34,211,238,0.5));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-400;
+  }
+}
+
+/* Subtle dotted pattern */
+.bg-dots {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Thin custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 99px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground)); background-clip: content-box; }
